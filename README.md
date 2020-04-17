@@ -7,3 +7,5 @@
 * [Orsenigo Davide](https://github.com/dadorse)
 
 ## Projects
+
+* [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
