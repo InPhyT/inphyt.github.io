@@ -1,4 +1,4 @@
-# Interdisciplinary Physics Team
+# InPhyT
 
 ## Members
 
