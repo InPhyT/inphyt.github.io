@@ -9,3 +9,4 @@
 ## Projects
 
 * [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
+* [BERT Sentiment Classification](https://inphyt.github.io/DataMiningBert/)
