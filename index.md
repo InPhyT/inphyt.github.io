@@ -1,10 +1,10 @@
-## Members
+## **Members**
 
 * [Monticone Pietro](https://github.com/pitmonticone)
 * [Moroni Claudio](https://github.com/claudio20497)
 * [Orsenigo Davide](https://github.com/dadorse)
 
-## Projects
+## **Projects**
 
 * [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
 * [BERT Sentiment Classification](https://inphyt.github.io/DataMiningBert/)
