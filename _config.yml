@@ -1,9 +1,10 @@
 # Name of website
-title: [Interdisciplinary Physics Team (InPhyT)]
+title: Interdisciplinary Physics Team (InPhyT)
 
 # Short description of your site
-description: [Mathematical and computational modelling group]
+description: Mathematical and computational modelling group
 
+# Theme
 theme: jekyll-theme-cayman
 
 # --- Footer options --- #
@@ -15,7 +16,6 @@ social-network-links:
   email: "complex.data.physics@gmail.com"
   github: InPhyT
   twitter: InPhyT2020
-  youtube: https://www.youtube.com/channel/UCNZ6R-F3x7UCuBVX7db9G8w?view_as=subscriber
   rss: true
   
 #  facebook: deanattali
