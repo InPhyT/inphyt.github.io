@@ -5,7 +5,7 @@ title: Interdisciplinary Physics Team (InPhyT)
 description: Mathematical and computational modelling group
 
 # Theme
-theme: jekyll-theme-cayman
+# theme: jekyll-theme-cayman
 
 # --- Footer options --- #
 
@@ -14,8 +14,8 @@ theme: jekyll-theme-cayman
 # If you don't want to show a link to an RSS feed, set rss to "false".
 social-network-links:
   email: "complex.data.physics@gmail.com"
-  github: InPhyT
-  twitter: InPhyT2020
+  github: https://github.com/InPhyT
+  twitter: https://twitter.com/InPhyT2020
   rss: true
   
 #  facebook: deanattali
