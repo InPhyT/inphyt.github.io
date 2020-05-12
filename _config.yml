@@ -1,3 +1,42 @@
+# Name of website
 title: [Interdisciplinary Physics Team (InPhyT)]
+
+# Short description of your site
 description: [Mathematical and computational modelling group]
+
 theme: jekyll-theme-cayman
+
+# --- Footer options --- #
+
+# Select the social network links that you want to show in the footer.
+# Uncomment the links you want to show and add your information to each one.
+# If you don't want to show a link to an RSS feed, set rss to "false".
+social-network-links:
+  email: "complex.data.physics@gmail.com"
+  github: InPhyT
+  twitter: InPhyT2020
+  youtube: https://www.youtube.com/channel/UCNZ6R-F3x7UCuBVX7db9G8w?view_as=subscriber
+  rss: true
+  
+#  facebook: deanattali
+#  reddit: yourname
+#  linkedin: daattali
+#  xing: yourname
+#  stackoverflow: "3943160/daattali"
+#  snapchat: deanat78
+#  instagram: deanat78
+#  spotify: yourname
+#  telephone: +14159998888
+#  steam: deanat78
+#  twitch: yourname
+#  yelp: yourname
+#  telegram: yourname
+#  calendly: yourname
+
+# --- General options --- #
+
+# Select which social network share links to show in posts
+share-links-active:
+  twitter: true
+  facebook: true
+  linkedin: true
