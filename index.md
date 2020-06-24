@@ -10,4 +10,4 @@ Orsenigo Davide | davide.orsenigo@edu.unito.it | [dadorse](https://github.com/da
 
 * [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
 * [BERT Sentiment Classification](https://inphyt.github.io/DataMiningProject/)
-* [CNN for Plant Disease Classification](https://inphyt.github.io/DataMiningProject/)
+* [CNN for Plant Disease Detection](https://inphyt.github.io/DataMiningProject/)
