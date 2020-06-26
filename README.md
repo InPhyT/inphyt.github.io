@@ -2,9 +2,11 @@
 
 ## Members 
 
-* Monticone Pietro | [Mail](pietro.monticone@edu.unito.it) | [GitHub](https://github.com/pitmonticone)
-* Moroni Claudio | [Mail](claudio.moroni@edu.unito.it) | [GitHub](https://github.com/claudio20497)
-* Orsenigo Davide | [Mail](davide.orsenigo@edu.unito.it) | [GitHub](https://github.com/dadorse) 
+| Name  | Mail | GitHub |
+| ---- | ---- | ---- |
+| Monticone Pietro | [pietro.monticone@edu.unito.it](pietro.monticone@edu.unito.it) | [@pitmonticone](https://github.com/pitmonticone) |
+| Moroni Claudio | [claudio.moroni@edu.unito.it](claudio.moroni@edu.unito.it) | [@claudio20497](https://github.com/claudio20497) |
+| Orsenigo Davide |[davide.orsenigo@edu.unito.it](davide.orsenigo@edu.unito.it) | [@dadorse](https://github.com/dadorse) |
 
 ## Projects
 
