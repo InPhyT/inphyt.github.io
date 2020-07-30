@@ -9,6 +9,14 @@
 
 ## Projects
 
+### Data Mining 
+
 * [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
-* [BERT Sentiment Classification](https://inphyt.github.io/DataMiningProject/)
-* [CNN for Plant Disease Detection](https://inphyt.github.io/DataMiningProject/)
+* [BERT Sentiment Classification](https://inphyt.github.io/DataMiningBert/)
+
+### Neural Networks
+* [Dataset Analysis and CNN Models Optimization for Plant Disease Classification](https://inphyt.github.io/NeuralNetworksProject/)
+
+### Social Physics
+
+* [Ego Graph Analysis on Social Media](inphyt.github.io/SocialPhysicsProject/)
