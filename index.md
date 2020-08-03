@@ -18,4 +18,4 @@
 
 ### Social Physics
 
-* [Ego Graph Analysis on Social Media](inphyt.github.io/SocialPhysicsProject/)
+* [Ego Graph Analysis on Social Media](https://inphyt.github.io/SocialPhysicsProject/)
