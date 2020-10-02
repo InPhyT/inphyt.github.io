@@ -145,12 +145,14 @@ The surveillance module controls all the policy interventions such as inter- and
 * Conservation of global population size
 * Large uncertainty in the initial condition (date, location and number of infected patients)
 * Lack of realistic regional-level heterogeneity in [diagnostic protocols](#diagnostic-strategies)
+* Absence of severity levels (*mild*, *severe*, *critical*) sub-compartments for symptomatic patients in [transmission module](#transmission-module)
 * Absence of hospitalization ($H$, $ICU$) compartments in [transmission module](#transmission-module)
 * Absence of behavioral module 
 * Absence of diagnostic performance of medical doctors (in absence of laboratory resources)
 
 ## Future developments {#future-developments}
 
+1. Implementation of severity levels (*mild*, *severe*, *critical*) sub-compartments for symptomatic patients in [transmission module](#transmission-module)
 1. Implementation of hospitalization ($H$, $ICU$) compartments in [transmission module](#transmission-module)
 1. Implementation of global and local, prevalence-based and opinion-based behavioral module 
 1. Violation of conservation of global population size with airport mobility 
