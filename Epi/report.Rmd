@@ -158,7 +158,7 @@ The surveillance module controls all the policy interventions such as inter- and
 1. Model calibration on a given region with municipal-level mobility and epidemiological data
 
 <p align="center">
-<iframe width="400" height="315" src="https://www.youtube.com/embed/dQT0gO4TQK8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe width="400" height="315" src="https://www.youtube.com/embed/L1peXUQZLAI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="600" height="315" src="https://www.youtube.com/embed/dQT0gO4TQK8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <iframe width="600" height="315" src="https://www.youtube.com/embed/L1peXUQZLAI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
 
 ## Appendix 
