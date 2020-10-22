@@ -1,0 +1,145 @@
+---
+title: "ABM-MAS Project<br>"
+subtitle: '<em>Algorithmic Bias in<br> Echo Chamber Formation</em> <br><br>'
+#author: 'Pietro Monticone | [`r icon::fa("at")`](pietro.monticone@edu.unito.it) [`r icon::fa("github")`](https://github.com/pitmonticone) [`r icon::fa("twitter")`](https://twitter.com/PietroMonticone)<br>Claudio Moroni &nbsp;&nbsp;&nbsp;| [`r icon::fa("at")`](claudio.moroni@edu.unito.it) [`r icon::fa("github")`](https://github.com/claudio20497) [`r icon::fa("twitter")`](https://twitter.com/ClaudioMoroni5)<br>Davide Orsenigo &nbsp;| [`r icon::fa("at")`](davide.orsenigo@edu.unito.it) [`r icon::fa("github")`](https://github.com/daorse) [`r icon::fa("twitter")`](https://twitter.com/DavideOrsenigo)<br>Riccardo Roma &nbsp;&nbsp;&nbsp;| [`r icon::fa("at")`](riccardo.roma@edu.unito.it) [`r icon::fa("github")`](https://github.com/) [`r icon::fa("twitter")`](https://twitter.com/)<br><br>'
+date: "`r Sys.Date()` | *University of Turin*"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: tomorrow-night-bright
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, include = FALSE, eval = FALSE) 
+library(DT)
+library(knitr)
+library(tidyverse)
+```
+
+name: overview
+class: center 
+
+# Overview 
+
+.left[
+**Goal**: to assess the impact of the recommendation algorithm on Twitter echo chambers.
+
+### 1. [**Definitions**](#definitions)
+
+### 2. [**Data**](#data)
+
+### 3. [**Model**](#model)
+
+### 4. [**Future Developments**](#future)
+]
+
+.footnote[
+.left[For further details, please read the [report]().]]
+
+---
+name: definitions
+class: center 
+## Definitions
+
+.left[
+### Recommendation algorithm
+A parametric feed-ranking system which is said to be
+
+* *free* if completely determined by the follower graph topology and users activity chronology;
+* *biased* otherwise.]
+
+.left[
+### Echo Chamber 
+Given, on a metagraph $G$:  
+* a measure of node attribute homogeneity $\xi:2^G \to \mathbb{R}$,
+* a clustering algorithm $\mathcal{C}$
+
+a $(\mathcal{C}, p)$-*echo chamber* is a subgraph $H \subseteq G$ such that
+1. $H$ is a $\mathcal{C}$-cluster.
+2. $\xi(H) \geq p$. 
+]
+---
+name: data
+class: center 
+# Data 
+
+.left[ 
+### 2012 collection
+1. **Tweets mining**: all relevant tweet objects from 2012 data.
+
+2. **Hashtag-based users mining**: U.S. election related hashtags have been searched and the users who adopted them selected. 
+
+3. **Subscription-based users mining**: only users who survived from 2012 to 2020 have been considered ( $\sim 100,000$ ).
+
+### 2020 collection
+
+1. **Interaction network scraping**: user timeline-aggregated interaction network has been extracted and all involved users ( $\sim 10,000$ ) identified.
+
+2. **Users activity monitoring**: A detailed temporal activity monitoring pipeline has been launched over all involved users.
+
+]
+
+---
+name: model
+class: center 
+# Model 
+
+#### Ambient Space
+A **multiplex graph** $(V,(E_{\text{follow}}, E_{\text{retweet}}, E_{\text{favorite}}, E_{\text{mention}}))$
+
+.pull-left[
+.left[
+#### Tweet
+* `id` $\in \mathbb{N}$
+* `user_id` $\in \mathbb{N}$
+* `retweet_status` $\in \{T,F\}$
+* `content` $\in \mathbb{R}$
+* ...
+
+#### User
+* `id` $\in \mathbb{N}$
+* `opinion` $\in \mathbb{R}$
+* `activity_rate` $\in \mathbb{R}$
+* ...
+]]
+
+.pull-right[
+.left[
+#### Micro-dynamics
+* `Tweet!`
+* `Update!`: opinion dynamics
+* `Follow!`: social dynamics
+* `Unfollow!`: social dynamics
+* ...
+
+#### Macro-dynamics
+* Centrality metrics
+* Clustering metrics
+* ...
+
+]]
+---
+name: future
+class: center 
+# Future Developments  
+
+.left[
+
+#### Initialization, calibration & validation
+
+* A time step is selected so that it encompasses a statistically significant portion of 2012 data. The distributions extracted from the first temporal slice is used to initialize the model. 
+* The rest, except for the last slice, is instead adopted to calibrate the model (parameters such as changes in activity rates).
+* The last slice will be used for validation. 
+
+#### Recommendation algorithm
+
+* Training and validation a model able to perform link prediction on the multiplex graph of the ABM from the monitor data.
+* Fit the parametric algorithm on the dynamics predicted by the link prediction model on the multiplex graph. 
+* Predicted feeds of all users will let us draw a temporal directed **tweet network**, whose nodes are users and edges encode reading relationships. This new network encodes the actual information flow on Twitter, the one where the concept of echo chambers makes sense.
+
+
+]

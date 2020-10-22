@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ABM-MAS Project</title>
+    <meta charset="utf-8" />
+    <link href="libs/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ABM-MAS Project<br>
+## <em>Algorithmic Bias in<br> Echo Chamber Formation</em> <br><br>
+### 2020-10-22 | <em>University of Turin</em>
+
+---
+
+
+
+
+name: overview
+class: center 
+
+# Overview 
+
+.left[
+**Goal**: to assess the impact of the recommendation algorithm on Twitter echo chambers.
+
+### 1. [**Definitions**](#definitions)
+
+### 2. [**Data**](#data)
+
+### 3. [**Model**](#model)
+
+### 4. [**Future Developments**](#future)
+]
+
+.footnote[
+.left[For further details, please read the [report]().]]
+
+---
+name: definitions
+class: center 
+## Definitions
+
+.left[
+### Recommendation algorithm
+A parametric feed-ranking system which is said to be
+
+* *free* if completely determined by the follower graph topology and users activity chronology;
+* *biased* otherwise.]
+
+.left[
+### Echo Chamber 
+Given, on a metagraph `\(G\)`:  
+* a measure of node attribute homogeneity `\(\xi:2^G \to \mathbb{R}\)`,
+* a clustering algorithm `\(\mathcal{C}\)`
+
+a `\((\mathcal{C}, p)\)`-*echo chamber* is a subgraph `\(H \subseteq G\)` such that
+1. `\(H\)` is a `\(\mathcal{C}\)`-cluster.
+2. `\(\xi(H) \geq p\)`. 
+]
+---
+name: data
+class: center 
+# Data 
+
+.left[ 
+### 2012 collection
+1. **Tweets mining**: all relevant tweet objects from 2012 data.
+
+2. **Hashtag-based users mining**: U.S. election related hashtags have been searched and the users who adopted them selected. 
+
+3. **Subscription-based users mining**: only users who survived from 2012 to 2020 have been considered ( `\(\sim 100,000\)` ).
+
+### 2020 collection
+
+1. **Interaction network scraping**: user timeline-aggregated interaction network has been extracted and all involved users ( `\(\sim 10,000\)` ) identified.
+
+2. **Users activity monitoring**: A detailed temporal activity monitoring pipeline has been launched over all involved users.
+
+]
+
+---
+name: model
+class: center 
+# Model 
+
+#### Ambient Space
+A **multiplex graph** `\((V,(E_{\text{follow}}, E_{\text{retweet}}, E_{\text{favorite}}, E_{\text{mention}}))\)`
+
+.pull-left[
+.left[
+#### Tweet
+* `id` `\(\in \mathbb{N}\)`
+* `user_id` `\(\in \mathbb{N}\)`
+* `retweet_status` `\(\in \{T,F\}\)`
+* `content` `\(\in \mathbb{R}\)`
+* ...
+
+#### User
+* `id` `\(\in \mathbb{N}\)`
+* `opinion` `\(\in \mathbb{R}\)`
+* `activity_rate` `\(\in \mathbb{R}\)`
+* ...
+]]
+
+.pull-right[
+.left[
+#### Micro-dynamics
+* `Tweet!`
+* `Update!`: opinion dynamics
+* `Follow!`: social dynamics
+* `Unfollow!`: social dynamics
+* ...
+
+#### Macro-dynamics
+* Centrality metrics
+* Clustering metrics
+* ...
+
+]]
+---
+name: future
+class: center 
+# Future Developments  
+
+.left[
+
+#### Initialization, calibration &amp; validation
+
+* A time step is selected so that it encompasses a statistically significant portion of 2012 data. The distributions extracted from the first temporal slice is used to initialize the model. 
+* The rest, except for the last slice, is instead adopted to calibrate the model (parameters such as changes in activity rates).
+* The last slice will be used for validation. 
+
+#### Recommendation algorithm
+
+* Training and validation a model able to perform link prediction on the multiplex graph of the ABM from the monitor data.
+* Fit the parametric algorithm on the dynamics predicted by the link prediction model on the multiplex graph. 
+* Predicted feeds of all users will let us draw a temporal directed **tweet network**, whose nodes are users and edges encode reading relationships. This new network encodes the actual information flow on Twitter, the one where the concept of echo chambers makes sense.
+
+
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
