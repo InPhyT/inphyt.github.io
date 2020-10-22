@@ -129,7 +129,7 @@ code span.ot { color: #007020; }
 <section class="main-content">
 <div id="goal" class="section level2">
 <h2><strong>Goal</strong></h2>
-<p>The research question is to assess algorithmic impact on Twitter echo chamber formation. <br> In order to minimize biases, we observe the same user pool debating over the same topic (US Elections) before and after the introduction of the recommendation algorithm in 2014. <br> Therefore, exploiting a complete dataset of 2012 tweets relative to 2012 U.S. elections, we extract a sample of users to initialize, calibrate and validate an ABM to describe an <a href="#FAD">free</a> Twitter. <br> The follow, retweet, favorite, mention (including replies) and hashtag emission of the same pool of users is being monitored in order to get the data needed to later model today’s algorithm-biased Twitter echo chamber dynamics and compare it with what would predict the validated algorithm-free model. So we organized the work so far as follows. <br></p>
+<p>The research question is to assess algorithmic impact on Twitter echo chamber formation. <br> In order to minimize biases, we observe the same user pool debating over the same topic (US Elections) before and after the introduction of the recommendation algorithm in 2014. <br> Therefore, exploiting a complete dataset of 2012 tweets relative to 2012 U.S. elections, we extract a sample of users to initialize, calibrate and validate an ABM to describe an <a href="#PAD">free</a> Twitter. <br> The follow, retweet, favorite, mention (including replies) and hashtag emission of the same pool of users is being monitored in order to get the data needed to later model today’s algorithm-biased Twitter echo chamber dynamics and compare it with what would predict the validated algorithm-free model. So we organized the work so far as follows. <br></p>
 </div>
 <div id="definitions" class="section level2">
 <h2><strong>Definitions</strong></h2>
@@ -184,7 +184,7 @@ code span.ot { color: #007020; }
 <h2><strong>Agent-based model</strong></h2>
 <div id="computational-framework" class="section level3">
 <h3>Computational framework</h3>
-<p>The framework we used is <a href>Agents.jl</a>, an intuitive yet powerful ABM Julia library . A key ingredient in Agents.jl ABM models is the <em>base space</em>, for which we adopted an ad-hoc extension of <a href>LightGraph.jl</a> model.</p>
+<p>The framework we used is <a href="https://juliadynamics.github.io/Agents.jl/stable/">Agents.jl</a>, an intuitive yet powerful ABM Julia library . A key ingredient in Agents.jl ABM models is the <em>base space</em>, for which we adopted an ad-hoc extension of <a href="https://juliagraphs.org/LightGraphs.jl/stable/">LightGraph.jl</a> model.</p>
 </div>
 <div id="overview" class="section level3">
 <h3>Overview</h3>

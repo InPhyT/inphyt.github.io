@@ -24,7 +24,7 @@ library(tidyverse)
 ## **Goal**
 The research question is to assess algorithmic impact on Twitter echo chamber formation. <br>
 In order to minimize biases, we observe the same user pool debating over the same topic (US Elections) before and after the introduction of the recommendation algorithm in 2014. <br>
-Therefore, exploiting a complete dataset of 2012 tweets relative to 2012 U.S. elections, we extract a sample of users  to initialize, calibrate and validate an ABM to describe an [free](#FAD) Twitter. <br> 
+Therefore, exploiting a complete dataset of 2012 tweets relative to 2012 U.S. elections, we extract a sample of users  to initialize, calibrate and validate an ABM to describe an [free](#PAD) Twitter. <br> 
 The follow, retweet, favorite, mention (including replies) and hashtag  emission of the same pool of users is being monitored in order to get the data needed to later model today's algorithm-biased Twitter echo chamber dynamics and compare it with what would predict the validated algorithm-free model.
 So we organized the work so far as follows. <br>
 
@@ -67,7 +67,7 @@ A detailed temporal activity monitoring pipeline has been launched over such $10
 
 ### Computational framework
 
-The framework we used is [Agents.jl](), an intuitive yet powerful ABM Julia library . A key ingredient in Agents.jl ABM models is the *base space*, for which we adopted an ad-hoc extension of [LightGraph.jl]() model.
+The framework we used is [Agents.jl](https://juliadynamics.github.io/Agents.jl/stable/), an intuitive yet powerful ABM Julia library . A key ingredient in Agents.jl ABM models is the *base space*, for which we adopted an ad-hoc extension of [LightGraph.jl](https://juliagraphs.org/LightGraphs.jl/stable/) model.
 
 ### Overview
 

@@ -38,7 +38,7 @@ class: center
 ]
 
 .footnote[
-.left[For further details, please read the [report]().]]
+.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
 
 ---
 name: definitions
