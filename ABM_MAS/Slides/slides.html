@@ -61,6 +61,7 @@ a `\((\mathcal{C}, p)\)`-*echo chamber* is a subgraph `\(H \subseteq G\)` such t
 1. `\(H\)` is a `\(\mathcal{C}\)`-cluster.
 2. `\(\xi(H) \geq p\)`. 
 ]
+
 ---
 name: data
 class: center 
@@ -72,13 +73,13 @@ class: center
 
 2. **Hashtag-based users mining**: U.S. election related hashtags have been searched and the users who adopted them selected. 
 
-3. **Subscription-based users mining**: only users who survived from 2012 to 2020 have been considered ( `\(\sim 100,000\)` ).
+3. **Subscription-based users mining**: the set `\(X\)` of users who survived from 2012 to 2020 has been considered ( `\(\sim 100,000\)` ).
 
 ### 2020 collection
 
-1. **Interaction network scraping**: user timeline-aggregated interaction network has been extracted and all involved users ( `\(\sim 10,000\)` ) identified.
+1. **Interaction network scraping**: user timeline-aggregated interaction network has been extracted `\(\forall y \in Y\)` in order to filter the subset `\(X \subset Y\)` of those who are still active and sufficiently connected ( `\(\sim 10,000\)` ).
 
-2. **Users activity monitoring**: A detailed temporal activity monitoring pipeline has been launched over all involved users.
+2. **Users activity monitoring**: A detailed temporal activity monitoring pipeline has been launched `\(\forall x \in X\)`.
 
 ]
 
@@ -128,18 +129,36 @@ class: center
 
 .left[
 
-#### Initialization, calibration &amp; validation
+### Initialization, calibration &amp; validation
 
 * A time step is selected so that it encompasses a statistically significant portion of 2012 data. The distributions extracted from the first temporal slice is used to initialize the model. 
-* The rest, except for the last slice, is instead adopted to calibrate the model (parameters such as changes in activity rates).
+
+* The rest, except for the last slice, is instead adopted to calibrate the model (parameters such as changes in activity rates)
+
 * The last slice will be used for validation. 
 
-#### Recommendation algorithm
+.footnote[
+.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
 
-* Training and validation a model able to perform link prediction on the multiplex graph of the ABM from the monitor data.
+]
+
+---
+name: future
+class: center 
+# Future Developments  
+
+.left[
+
+### Recommendation algorithm
+
+* Training and validation of a model able to perform link prediction on the multiplex graph of the ABM from the monitor data.
+
 * Fit the parametric algorithm on the dynamics predicted by the link prediction model on the multiplex graph. 
+
 * Predicted feeds of all users will let us draw a temporal directed **tweet network**, whose nodes are users and edges encode reading relationships. This new network encodes the actual information flow on Twitter, the one where the concept of echo chambers makes sense.
 
+.footnote[
+.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
 
 ]
     </textarea>
