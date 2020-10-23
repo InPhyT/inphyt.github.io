@@ -54,11 +54,8 @@ A parametric feed-ranking system which is said to be
 
 .left[
 ### Echo Chamber 
-Given, on a metagraph $G$:  
-* a measure of node attribute homogeneity $\xi:2^G \to \mathbb{R}$,
-* a clustering algorithm $\mathcal{C}$
-
-a $(\mathcal{C}, p)$-*echo chamber* is a subgraph $H \subseteq G$ such that
+Let's consider a metagraph $G$, a measure of node attribute homogeneity $\xi:2^G \to \mathbb{R}$ and a clustering algorithm $\mathcal{C}$. 
+We define a $(\mathcal{C}, p)$-*echo chamber* as a subgraph $H \subseteq G$ such that
 1. $H$ is a $\mathcal{C}$-cluster.
 2. $\xi(H) \geq p$. 
 ]
