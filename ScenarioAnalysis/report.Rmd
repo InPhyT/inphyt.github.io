@@ -1,0 +1,39 @@
+---
+title: "Progetto di Modellizzazione COVID-19<br>"
+subtitle: '<em>Analisi di Scenario per la Regione Piemonte</em>'
+date: "`r Sys.Date()`, *University of Turin*"
+output: 
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+    toc: false
+fontsize: 10pt
+bibliography: references.bibtex 
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, include = FALSE, eval = FALSE) 
+library(DT)
+library(knitr)
+library(tidyverse)
+```
+
+## Obiettivo {#goal}
+
+Il nostro progetto di ricerca consiste nello sviluppo di un modello equation-based che descriva accuratamente la dinamica di diffusione di COVID-19 sul territorio piemontese al fine di valutare l'impatto di potenziali interventi di sanità pubblica e modifiche comportamentali della popolazione sul controllo della trasmissione del virus.
+
+## Dati {#data}
+
+I dati epidemiologicamnete rilevanti di cui disponiamo attualmente sono quelli che il [Dipartimento di Protezione Civile](https://github.com/pcm-dpc/COVID-19) pubblica quotidianamente. L'accuratezza e la risoluzione di questi ultimi limitano la possibilità di calibrare opportunamente i modelli epidemiologici con i quali effettuare previsioni che siano al contempo precise e affidabili. 
+
+Pertanto, per raggiungere la robustezza desiderata, necessitiamo dei seguenti datasets:
+
+* Casi deceduti per data di decesso stratificati per età;
+* Casi ospedalizzati e terapie intensive per data di ammissione stratificate per età;
+* Casi sintomatici per data di inizio sintomi stratificati per età.
+
+## Modello {#model}
+
+Il modello consiste in un equation-based, multi-livello, strutturato per età e sintomatologia aggiornato agli ultimi report clinici ed epidemiologici su SARS-CoV-2. 
