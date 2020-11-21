@@ -1,7 +1,7 @@
 ---
 title: "Progetto di Modellizzazione COVID-19<br>"
 subtitle: '<em>Analisi di Scenario per la Regione Piemonte</em>'
-date: "`r Sys.Date()` | *Università degli Studi di Torino*, *Fondazione ISI*"
+date: "`r Sys.Date()` | Università degli Studi di Torino, Fondazione ISI"
 output: 
   prettydoc::html_pretty:
     theme: cayman
