@@ -28,17 +28,19 @@ class: center
 .left[
 **Goal**: to assess the impact of the recommendation algorithm on Twitter echo chambers.
 
-### 1. [**Definitions**](#definitions)
+#### 1. [*Definitions*](#definitions)
 
-### 2. [**Data**](#data)
+#### 2. [*Data*](#data)
 
-### 3. [**Model**](#model)
+#### 3. [*Model*](#model)
 
-### 4. [**Future Developments**](#future)
+#### 4. [*Exploratory Data Analysis*](#exploratory-data-analysis)
+
+#### 5. [*Future Developments*](#future)
 ]
 
 .footnote[
-.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ---
 name: definitions
@@ -120,6 +122,115 @@ A **multiplex graph** $(V,(E_{\text{follow}}, E_{\text{retweet}}, E_{\text{favor
 * ...
 
 ]]
+
+---
+name: exploratory-data-analysis
+class: center 
+
+# Exploratory Data Analysis
+
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
+---
+name: tweet-dynamics
+class: center 
+
+## Tweet Dynamics
+
+
+![](figures/aggregated_tweets.png)
+![](figures/aggregated_tweets_cumulated.png)
+
+---
+name: retweet-dynamics
+class: center 
+
+## Retweet Dynamics
+
+
+![](figures/aggregated_retweets.png)
+![](figures/aggregated_retweets_cumulated.png)
+
+---
+name: hashtag-dynamics
+class: center 
+
+## Hashtag Dynamics
+
+
+![](figures/aggregated_hashtags.png)
+![](figures/aggregated_hashtags_cumulated.png)
+
+---
+name: favorite-activity
+class: center 
+
+## Favorite Activity
+
+
+![](figures/favourite_activity.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
+---
+name: hashtag-activity
+class: center 
+
+## Hashtag Activity
+
+
+![](figures/hashtags_activity.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+---
+name: friend-activity
+class: center 
+
+## Friend Activity
+
+
+![](figures/friend_activity.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+---
+name: hashtag-frequency
+class: center 
+
+## Hashtag Frequency 
+
+![](figures/mean_hashtags_frequency.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+---
+name: hashtag-heterogeneity
+class: center 
+
+## Hashtag Heterogeneity 
+
+![](figures/mean_hashtags_heterogeneity.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+---
+name: activity-ensembles1
+class: center 
+
+## Activity Ensembles
+
+![](figures/ensembles_tweet_retweet_friend.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
+---
+name: activity-ensembles2
+class: center 
+
+## Activity Ensembles
+
+![](figures/ensembles_favourite_hashtags.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
 ---
 name: future
 class: center 
@@ -136,7 +247,7 @@ class: center
 * The last slice will be used for validation. 
 
 .footnote[
-.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ]
 
@@ -156,6 +267,6 @@ class: center
 * Predicted feeds of all users will let us draw a temporal directed **tweet network**, whose nodes are users and edges encode reading relationships. This new network encodes the actual information flow on Twitter, the one where the concept of echo chambers makes sense.
 
 .footnote[
-.left[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ]
