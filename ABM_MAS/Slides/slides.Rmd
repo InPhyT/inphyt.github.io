@@ -161,6 +161,25 @@ class: center
 
 ![](figures/aggregated_hashtags.png)
 ![](figures/aggregated_hashtags_cumulated.png)
+---
+name: activity-ensembles1
+class: center 
+
+## Activity Ensembles
+
+![](figures/ensembles_tweet_retweet_friend.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
+---
+name: activity-ensembles2
+class: center 
+
+## Activity Ensembles
+
+![](figures/ensembles_favourite_hashtags.png)
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ---
 name: favorite-activity
@@ -211,23 +230,15 @@ class: center
 ![](figures/mean_hashtags_heterogeneity.png)
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
----
-name: activity-ensembles1
-class: center 
-
-## Activity Ensembles
-
-![](figures/ensembles_tweet_retweet_friend.png)
-.footnote[
-.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ---
-name: activity-ensembles2
+name: interacting-user-heterogeneity
 class: center 
 
-## Activity Ensembles
+## Interacting User Heterogeneity
 
-![](figures/ensembles_favourite_hashtags.png)
+![](figures/interactivity_activity.png)
+
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
