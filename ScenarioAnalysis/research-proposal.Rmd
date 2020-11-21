@@ -58,3 +58,4 @@ Pertanto, per raggiungere la robustezza desiderata, necessitiamo delle seguenti 
 * Casi dimessi / guariti per data di dimissione ($R$);
 * Casi deceduti per data di decesso ($D$).
 
+In un primo momento potrebbero risultare sufficienti le serie temporali relative al periodo Gennaio-Luglio. 
