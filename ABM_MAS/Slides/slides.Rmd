@@ -3,6 +3,7 @@ title: "ABM-MAS Project<br>"
 subtitle: '<em>Algorithmic Bias in<br> Echo Chamber Formation</em> <br><br>'
 #author: 'Pietro Monticone | [`r icon::fa("at")`](pietro.monticone@edu.unito.it) [`r icon::fa("github")`](https://github.com/pitmonticone) [`r icon::fa("twitter")`](https://twitter.com/PietroMonticone)<br>Claudio Moroni &nbsp;&nbsp;&nbsp;| [`r icon::fa("at")`](claudio.moroni@edu.unito.it) [`r icon::fa("github")`](https://github.com/claudio20497) [`r icon::fa("twitter")`](https://twitter.com/ClaudioMoroni5)<br>Davide Orsenigo &nbsp;| [`r icon::fa("at")`](davide.orsenigo@edu.unito.it) [`r icon::fa("github")`](https://github.com/daorse) [`r icon::fa("twitter")`](https://twitter.com/DavideOrsenigo)<br>Riccardo Roma &nbsp;&nbsp;&nbsp;| [`r icon::fa("at")`](riccardo.roma@edu.unito.it) [`r icon::fa("github")`](https://github.com/) [`r icon::fa("twitter")`](https://twitter.com/)<br><br>'
 date: "`r Sys.Date()` | *University of Turin*"
+#geometry: margin = 0.1cm
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -136,48 +137,127 @@ class: center
 name: tweet-dynamics
 class: center 
 
-## Tweet Dynamics
+## Tweet Dynamics: *X vs. Y*
 
+.pull-left[
+### Year
 
-![](figures/aggregated_tweets.png)
-![](figures/aggregated_tweets_cumulated.png)
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_tweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_tweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_tweets_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_tweets_cumulated.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_tweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_tweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_tweets_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_tweets_cumulated.png)
+
+]
 
 ---
 name: retweet-dynamics
 class: center 
 
-## Retweet Dynamics
+## Retweet Dynamics: *X vs. Y*
 
 
-![](figures/aggregated_retweets.png)
-![](figures/aggregated_retweets_cumulated.png)
+.pull-left[
+### Year
 
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_retweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_retweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_retweets_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_retweets_cumulated.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_retweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_retweets_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_retweets_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_retweets_cumulated.png)
+
+]
 ---
 name: hashtag-dynamics
 class: center 
 
-## Hashtag Dynamics
+## Hashtag Dynamics: *X vs. Y*
 
 
-![](figures/aggregated_hashtags.png)
-![](figures/aggregated_hashtags_cumulated.png)
+.pull-left[
+### Year
+
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_hashtags_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_hashtags_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_160000/aggregated_hashtags_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_10000/aggregated_hashtags_cumulated.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_hashtags_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_hashtags_daily.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_160000/aggregated_hashtags_cumulated.png)
+
+![](figures/monitored_users_2012_AT_activity_election_period_10000/aggregated_hashtags_cumulated.png)
+
+]
 ---
-name: activity-ensembles1
+name: activity-ensemblesx
 class: center 
 
-## Activity Ensembles
+## Activity Ensembles: *X*
 
-![](figures/ensembles_tweet_retweet_friend.png)
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/ensemble.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_160000/ensemble.png)
+]
+
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
 ---
-name: activity-ensembles2
+name: activity-ensemblesy
 class: center 
 
-## Activity Ensembles
+## Activity Ensembles: *Y*
 
-![](figures/ensembles_favourite_hashtags.png)
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_10000/ensemble.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_10000/ensemble.png)
+]
+
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
@@ -185,10 +265,22 @@ class: center
 name: favorite-activity
 class: center 
 
-## Favorite Activity
+## Favorite Activity: *X vs. Y*
 
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/favourite_activity.png)
+![](figures/monitored_users_2012_AT_activity_10000/favourite_activity.png)
 
-![](figures/favourite_activity.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/favourite_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/favourite_activity.png)
+
+]
+
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 
@@ -196,51 +288,100 @@ class: center
 name: hashtag-activity
 class: center 
 
-## Hashtag Activity
+## Hashtag Activity: *X vs. Y*
 
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/hashtags_activity.png)
+![](figures/monitored_users_2012_AT_activity_10000/hashtags_activity.png)
 
-![](figures/hashtags_activity.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/hashtags_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/hashtags_activity.png)
+
+]
+
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 ---
 name: friend-activity
 class: center 
 
-## Friend Activity
+## Friend Activity: *X vs. Y*
 
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/friend_activity.png)
+![](figures/monitored_users_2012_AT_activity_10000/friend_activity.png)
 
-![](figures/friend_activity.png)
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/friend_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/friend_activity.png)
+]
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
 ---
 name: hashtag-frequency
 class: center 
 
-## Hashtag Frequency 
+## Hashtag Frequency: *X vs. Y*
 
-![](figures/mean_hashtags_frequency.png)
-.footnote[
-.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_frequency.png)
+![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_frequency.png)
+
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_frequency.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_frequency.png)
+]
+
 ---
 name: hashtag-heterogeneity
 class: center 
 
-## Hashtag Heterogeneity 
+## Hashtag Heterogeneity: *X vs. Y*
 
-![](figures/mean_hashtags_heterogeneity.png)
-.footnote[
-.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_heterogeneity.png)
+![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_heterogeneity.png)
+
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_heterogeneity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_heterogeneity.png)
+]
 
 ---
 name: interacting-user-heterogeneity
 class: center 
 
-## Interacting User Heterogeneity
+## Interaction Heterogeneity: *X vs. Y*
 
-![](figures/interactivity_activity.png)
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/interactivity_activity.png)
+![](figures/monitored_users_2012_AT_activity_10000/interactivity_activity.png)
 
-.footnote[
-.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/interactivity_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/interactivity_activity.png)
+]
 
 ---
 name: future
