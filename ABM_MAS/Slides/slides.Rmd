@@ -269,15 +269,15 @@ class: center
 
 .pull-left[
 ### Year
-![](figures/monitored_users_2012_AT_activity_160000/favourite_activity.png)
-![](figures/monitored_users_2012_AT_activity_10000/favourite_activity.png)
+![](figures/monitored_users_2012_AT_activity_160000/favourite_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/favourite_activity_rounded.png)
 
 ]
 
 .pull-right[
 ### Election Period
-![](figures/monitored_users_2012_AT_activity_election_period_160000/favourite_activity.png)
-![](figures/monitored_users_2012_AT_activity_election_period_10000/favourite_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_160000/favourite_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/favourite_activity_rounded.png)
 
 ]
 
@@ -292,15 +292,15 @@ class: center
 
 .pull-left[
 ### Year
-![](figures/monitored_users_2012_AT_activity_160000/hashtags_activity.png)
-![](figures/monitored_users_2012_AT_activity_10000/hashtags_activity.png)
+![](figures/monitored_users_2012_AT_activity_160000/hashtags_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/hashtags_activity_rounded.png)
 
 ]
 
 .pull-right[
 ### Election Period
-![](figures/monitored_users_2012_AT_activity_election_period_160000/hashtags_activity.png)
-![](figures/monitored_users_2012_AT_activity_election_period_10000/hashtags_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_160000/hashtags_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/hashtags_activity_rounded.png)
 
 ]
 
@@ -314,18 +314,40 @@ class: center
 
 .pull-left[
 ### Year
-![](figures/monitored_users_2012_AT_activity_160000/friend_activity.png)
-![](figures/monitored_users_2012_AT_activity_10000/friend_activity.png)
+![](figures/monitored_users_2012_AT_activity_160000/friend_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/friend_activity_rounded.png)
 
 ]
 
 .pull-right[
 ### Election Period
-![](figures/monitored_users_2012_AT_activity_election_period_160000/friend_activity.png)
-![](figures/monitored_users_2012_AT_activity_election_period_10000/friend_activity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_160000/friend_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/friend_activity_rounded.png)
 ]
 .footnote[
 .left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
+---
+name: friend-activity
+class: center 
+
+## Mention Activity: *X vs. Y*
+
+.pull-left[
+### Year
+![](figures/monitored_users_2012_AT_activity_160000/mention_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/mention_activity_rounded.png)
+
+]
+
+.pull-right[
+### Election Period
+![](figures/monitored_users_2012_AT_activity_election_period_160000/mention_activity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/mention_activity_rounded.png)
+]
+.footnote[
+.left[.small[For further details, please read the [report](https://inphyt.github.io/ABM_MAS/Report/report.html).]]]
+
 ---
 name: hashtag-frequency
 class: center 
@@ -334,15 +356,15 @@ class: center
 
 .pull-left[
 ### Year
-![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_frequency.png)
-![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_frequency.png)
+![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_frequency_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_frequency_rounded.png)
 
 ]
 
 .pull-right[
 ### Election Period
-![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_frequency.png)
-![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_frequency.png)
+![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_frequency_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_frequency_rounded.png)
 ]
 
 ---
@@ -353,15 +375,15 @@ class: center
 
 .pull-left[
 ### Year
-![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_heterogeneity.png)
-![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_heterogeneity.png)
+![](figures/monitored_users_2012_AT_activity_160000/mean_hashtags_heterogeneity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_10000/mean_hashtags_heterogeneity_rounded.png)
 
 ]
 
 .pull-right[
 ### Election Period
-![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_heterogeneity.png)
-![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_heterogeneity.png)
+![](figures/monitored_users_2012_AT_activity_election_period_160000/mean_hashtags_heterogeneity_rounded.png)
+![](figures/monitored_users_2012_AT_activity_election_period_10000/mean_hashtags_heterogeneity_rounded.png)
 ]
 
 ---
