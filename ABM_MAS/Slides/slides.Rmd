@@ -85,46 +85,6 @@ class: center
 ]
 
 ---
-name: model
-class: center 
-# Model 
-
-#### Ambient Space
-A **multiplex graph** $(V,(E_{\text{follow}}, E_{\text{retweet}}, E_{\text{favorite}}, E_{\text{mention}}))$
-
-.pull-left[
-.left[
-#### Tweet
-* `id` $\in \mathbb{N}$
-* `user_id` $\in \mathbb{N}$
-* `retweet_status` $\in \{T,F\}$
-* `content` $\in \mathbb{R}$
-* ...
-
-#### User
-* `id` $\in \mathbb{N}$
-* `opinion` $\in \mathbb{R}$
-* `activity_rate` $\in \mathbb{R}$
-* ...
-]]
-
-.pull-right[
-.left[
-#### Micro-dynamics
-* `Tweet!`
-* `Update!`: opinion dynamics
-* `Follow!`: social dynamics
-* `Unfollow!`: social dynamics
-* ...
-
-#### Macro-dynamics
-* Centrality metrics
-* Clustering metrics
-* ...
-
-]]
-
----
 name: exploratory-data-analysis
 class: center 
 
@@ -495,6 +455,163 @@ class: center
 
 ![](figures/monitored_users_2012_AT_activity_election_period_10000/ccdfs.png)
 
+---
+name: model-architecture
+class: center 
+## Model Architecture
+
+.small[
+#### Ambient Space
+A **multiplex graph** $(V,(E_{\text{follow}}, E_{\text{retweet}}, E_{\text{favorite}}, E_{\text{mention}}))$
+
+.pull-left[
+.left[
+#### Tweet
+* `id` $\in \mathbb{N}$
+* `user_id` $\in \mathbb{N}$
+* `retweet_status` $\in \{T,F\}$
+* `content` $\in \mathbb{R}$
+* ...
+
+#### User
+* `id` $\in \mathbb{N}$
+* `opinion` $\in \mathbb{R}$
+* `activity_rate` $\in \mathbb{R}$
+* ...
+]]
+
+.pull-right[
+.left[
+#### Micro-dynamics
+* `Tweet!`
+* `Update!`: opinion dynamics
+* `Follow!`: social dynamics
+* `Unfollow!`: social dynamics
+* ...
+
+#### Macro-dynamics
+* Centrality metrics
+* Clustering metrics
+* ...
+
+]]
+]
+---
+name: model-simple1
+class: center 
+## Minimal Model
+
+.small[
+.pull-left[
+.left[
+
+#### Tweet Type
+
+* `id` $\in V \subset \mathbb{N}$            
+* `user_id` $\in \mathbb{N}$         
+* `retweet_status` $\in \mathbb{B}$  
+* `retweeted_id` $\in \mathbb{N}$ 
+* `retweeted_user_id` $\in \mathbb{N}$ 
+* `content` $\in \mathbb{R}$ 
+* `favorite_count` $\in \mathbb{N}$
+* `retweet_count` $\in \mathbb{N}$  
+* `step` $\in \mathbb{N}$        
+
+#### User Type
+
+* `id` $\in \mathbb{N}$       
+* `pos` $\in \mathbb{N}$              
+* `feed` $\subset \mathcal{T}$  
+* `tweets` $\subset \mathcal{T}$  
+* `favorites` $\subset \mathcal{T}$
+* `opinion` $\in \mathbb{R}$       
+* `tweet_rate` $\in \mathbb{R}$     
+* `retweet_rate` $\in \mathbb{R}$     
+* `favorite_rate` $\in \mathbb{R}$   
+* `follow_rate` $\in \mathbb{R}$     
+* `unfollow_rate` $\in \mathbb{R}$    
+]
+]
+.pull-right[
+.left[
+
+#### Data 
+* Degree distributions 
+* Activity distributions
+    * Tweet
+    * Favourite 
+    * Follow
+    
+#### Parameters
+
+* Population size $N$
+* Number of replicates $R$
+* Number of time steps $T$
+* Controversialness $\alpha$ 
+* Follow threshold $f$
+* Unfollow threshold $u$
+
+#### Properties 
+
+* Population size `N` 
+* Time step `step` 
+* Tweet ID counter `tweet_id` 
+* Tweet objects `tweets` 
+* Controversialness `α`
+* Follow threshold `follow_threshold`
+* Unfollow threshold `unfollow_threshold`
+]
+]
+]
+
+---
+name: model-simple2
+class: center 
+## Minimal Model
+
+.small[
+.pull-left[
+.left[
+
+#### Initialization 
+
+* `id`: sequentially initialized 
+* `pos`: sequentially initialized 
+* `feed`: initialized as an empty array    
+* `tweets`: initialized as an empty array
+* `favorites`: initialized as an empty array
+* `opinion`: drawn from $\mathcal{U}(-1,1)$          
+* `tweet_rate` and `retweet_rate`: sampled from 2012 activity data 
+* `favorite_rate`: sampled from 2012 activity data 
+* `follow_rate` and `unfollow_rate`: sampled from 2012 activity data 
+* `follower_graph`: friends (outneighbors) of each user (node) have been drawn from a $\Gamma(2,1)$
+
+#### Calibration 
+
+Not discussed yet. 
+
+#### Validation 
+
+Not discussed yet.
+  
+]]
+
+.pull-right[
+.left[
+
+#### Micro-Dynamics 
+
+* Opinion dynamics (`Update!`): governed by the equation in [Baumann et al. (2020)](https://doi.org/10.1103/PhysRevLett.124.048301) 
+* Follow dynamics (`Follow!`): uniform sampling from the complement of set of friends according to `follow_rate` and `follow_threshold` 
+* Unfollow dynamics (`Unollow!`): uniform sampling from the set of friends according to the user's `unfollow_rate` and `unfollow_threshold` 
+
+#### Macro-Dynamics 
+
+* Time step `step` is incremented by one at each iteration
+* Tweet ID counter `tweet_id` is incremented by one every time a tweet is authored (or retweeted)
+* Tweet objects `tweets` is enriched with every tweet object authored (or retweeted)
+]]
+]
 
 ---
 name: future
