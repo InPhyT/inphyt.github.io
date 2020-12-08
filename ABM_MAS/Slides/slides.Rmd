@@ -603,13 +603,47 @@ Not discussed yet.
 
 * Opinion dynamics (`Update!`): governed by the equation in [Baumann et al. (2020)](https://doi.org/10.1103/PhysRevLett.124.048301) 
 * Follow dynamics (`Follow!`): uniform sampling from the complement of set of friends according to `follow_rate` and `follow_threshold` 
-* Unfollow dynamics (`Unollow!`): uniform sampling from the set of friends according to the user's `unfollow_rate` and `unfollow_threshold` 
+* Unfollow dynamics (`Unfollow!`): uniform sampling from the set of friends according to the user's `unfollow_rate` and `unfollow_threshold` 
 
 #### Macro-Dynamics 
 
 * Time step `step` is incremented by one at each iteration
 * Tweet ID counter `tweet_id` is incremented by one every time a tweet is authored (or retweeted)
 * Tweet objects `tweets` is enriched with every tweet object authored (or retweeted)
+]]
+]
+
+---
+name: model-simple3
+class: center 
+## Minimal Model
+
+.small[
+.pull-left[
+.left[
+
+### Thoughts & Doubts 
+
+* How to define distinct time scales ? $$T_{F} \gg T_{RT} > T_{L}$$ 
+* Choose `nsteps` taking into account the constraints induced by Monitor resolution.
+* Highlight the latency of the opinion variable: users do not have direct access to the *cognitive opinion* of others but they have indirect access to *behavioral opinion* leading to a non-zero probability of misinterpretation (we may model it via probability distributions centered around the true value)
+* Think about how to implement possible polarization/segregation mitigation strategies (e.g. *homophily-induced heterophily*)
+* How to reliably mine temporal behavioral opinion and reaction mechanisms (e.g. net positive interaction rate: net of T,RTs,L of known polarity / total number of interactions) 
+  
+]]
+
+.pull-right[
+.left[
+
+### To-Do List
+
+* Overwrite all graph-related functions in `Agents.jl` to ensure compatibility with `MultiplexGraphs.jl` (e.g. `get_node_agents()`,...)
+* Think about all elementary variables, parameters and timing distributions
+* Explore the portfolio of possible recommendation systems (e.g. GNN, bipartite, centrality-based, simple weighted sum,...)
+* Implement `Read!`, `Tweet!`, `Like!`, `RT!` behaviors
+* Implement the simplest recommendation system (in `model_step!`)
+* Implement non-trivial interpretation distribution $\rho_i$
+* Think of the best parametrization that allows effective calibration 
 ]]
 ]
 
