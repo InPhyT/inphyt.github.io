@@ -1,0 +1,542 @@
+---
+title: "COVID-19 Modelling Project<br>"
+subtitle: '<em>Scenario Analysis</em><br><br>'
+author: 'Pietro Monticone | [`r icon::fa("at")`](pietro.monticone@edu.unito.it) [`r icon::fa("github")`](https://github.com/pitmonticone)<br>Davide Orsenigo &nbsp;| [`r icon::fa("at")`](davide.orsenigo@edu.unito.it) [`r icon::fa("github")`](https://github.com/daorse)<br>Claudio Moroni &nbsp;&nbsp;&nbsp;| [`r icon::fa("at")`](claudio.moroni@edu.unito.it) [`r icon::fa("github")`](https://github.com/claudio20497)<br><br><br>'
+date: "`r Sys.Date()` | *University of Turin*"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: tomorrow-night-bright
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, include = FALSE, eval = FALSE) 
+library(DT)
+library(knitr)
+library(tidyverse)
+```
+
+name: overview
+class: center 
+
+# Overview 
+
+.left[
+
+.pull-left[
+### 1. **Data**
+
+* [*Population*](#population)
+
+* [*Contact*](#contact)
+
+* [*Behavior*](#behavior)
+
+* [*Surveillance*](#surveillance)
+
+### 2. **Models**
+
+* [*Minimal Model*](#minimal)
+
+* [*Full Model*](#full)
+
+]
+
+.pull-right[
+### 3. **Discussion**
+
+* [*Good news about SEPI-SEREMI data*](#news-data) 
+
+* [*Bad news about SEPI-SEREMI data*](#news-data) 
+
+* [*Initial conditions*](#initial-conditions)
+
+* [*Portfolio of scenarios*](#scenarios)
+
+]
+]
+
+---
+name: population
+class: center 
+
+## Population Data   
+
+.pull-left[
+### National 
+![Italy](figures/Population/Italy.png)
+]
+
+.pull-right[
+### Regional 
+![Piedmont](figures/Population/Piedmont.png)
+]
+
+
+.footnote[
+.left[.small[**Source**: [ISTAT (2020)](http://demo.istat.it/pop2020/index_e.html)]]
+]
+
+---
+name: contact
+class: center 
+
+## Contact Data   
+
+.pull-left[
+### National 
+.pull-left[
+![All](figures/Contact/Italy/Home.png)
+
+![All](figures/Contact/Italy/Work.png)
+]
+.pull-right[
+![All](figures/Contact/Italy/School.png)
+
+![All](figures/Contact/Italy/Community.png)
+]
+
+]
+
+.pull-right[
+### Regional (M0)
+
+.pull-left[
+![All](figures/Contact/Piedmont/Home_M0.png)
+
+![All](figures/Contact/Piedmont/Work_M0.png)
+]
+.pull-right[
+![All](figures/Contact/Piedmont/School_M0.png)
+
+![All](figures/Contact/Piedmont/Community_M0.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772) , [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638)]]
+]
+---
+name: contact-M1
+class: center 
+
+## Contact Data   
+
+.pull-left[
+### National 
+.pull-left[
+![All](figures/Contact/Italy/Home.png)
+
+![All](figures/Contact/Italy/Work.png)
+]
+.pull-right[
+![All](figures/Contact/Italy/School.png)
+
+![All](figures/Contact/Italy/Community.png)
+]
+
+]
+
+.pull-right[
+### Regional (M1)
+
+.pull-left[
+![All](figures/Contact/Piedmont/Home_M1.png)
+
+![All](figures/Contact/Piedmont/Work_M1.png)
+]
+.pull-right[
+![All](figures/Contact/Piedmont/School_M1.png)
+
+![All](figures/Contact/Piedmont/Community_M1.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772) , [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638)]]
+]
+---
+name: contact-M2
+class: center 
+
+## Contact Data   
+
+.pull-left[
+### National 
+.pull-left[
+![All](figures/Contact/Italy/Home.png)
+
+![All](figures/Contact/Italy/Work.png)
+]
+.pull-right[
+![All](figures/Contact/Italy/School.png)
+
+![All](figures/Contact/Italy/Community.png)
+]
+
+]
+
+.pull-right[
+### Regional (M2)
+
+.pull-left[
+![All](figures/Contact/Piedmont/Home_M2.png)
+
+![All](figures/Contact/Piedmont/Work_M2.png)
+]
+.pull-right[
+![All](figures/Contact/Piedmont/School_M2.png)
+
+![All](figures/Contact/Piedmont/Community_M2.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772) , [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638)]]
+]
+---
+name: contact-M3
+class: center 
+
+## Contact Data   
+
+.pull-left[
+### National 
+.pull-left[
+![All](figures/Contact/Italy/Home.png)
+
+![All](figures/Contact/Italy/Work.png)
+]
+.pull-right[
+![All](figures/Contact/Italy/School.png)
+
+![All](figures/Contact/Italy/Community.png)
+]
+
+]
+
+.pull-right[
+### Regional (M3)
+
+.pull-left[
+![All](figures/Contact/Piedmont/Home_M3.png)
+
+![All](figures/Contact/Piedmont/Work_M3.png)
+]
+.pull-right[
+![All](figures/Contact/Piedmont/School_M3.png)
+
+![All](figures/Contact/Piedmont/Community_M3.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772) , [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638)]]
+]
+
+---
+name: projection-method-selection
+class: center 
+
+## Projection Method Selection
+
+<br>
+
+| **Method**| *Additivity* | *Reciprocity* | *Intrinsic Connectivity* | *Mean Connectivity* |
+| :------: | :------: | :------: | :------: | :------: |
+| M0 | ✓ | ✗ | ✗ | ✗ |
+| M1 | ✓ | ✓ | ✗ | ✗ |
+| **M2** | **✓** | **✓** | **✓**  | **✗** |
+| M3 | ✗ | ✓ | ✓*| ✓ |
+
+<br>
+
+Imposing conservation of *intrinsic connectivity* on **M3** <br> $\Leftrightarrow$ <br> Imposing conservation of *mean connectivity* on **M2**.
+
+.footnote[
+.left[.small[✓*: preserved up to a global factor.
+
+**Sources**: [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638)
+]]
+]
+
+---
+name: behavior
+class: center 
+
+## Behavioral Changes 
+
+.pull-left[
+![All](figures/Contact/Piedmont/All_M2-School_M2.png)
+]
+
+.pull-right[
+![All](figures/Contact/Piedmont/All_M2-School_M2_Lockdown.png)
+]
+
+.footnote[
+.left[.small[
+**NB**: The lockdown contact matrix above comes from a SEIRD model calibrated on reported deaths.
+]]
+]
+---
+name: surveillance
+class: center 
+
+## Surveillance Data   
+
+.pull-left[
+### National 
+.pull-left[
+![H](figures/Epidemiology/Italy/Hospitalizations.png)
+
+![HI](figures/Epidemiology/Italy/Home_Isolations.png)
+]
+.pull-right[
+![ICU](figures/Epidemiology/Italy/ICUs.png)
+
+![D](figures/Epidemiology/Italy/Deaths.png)
+]
+
+]
+
+.pull-right[
+### Regional 
+
+.pull-left[
+![H](figures/Epidemiology/Piedmont/Hospitalizations.png)
+
+![HI](figures/Epidemiology/Piedmont/Home_Isolations.png)
+]
+.pull-right[
+![ICU](figures/Epidemiology/Piedmont/ICUs.png)
+
+![D](figures/Epidemiology/Piedmont/Deaths.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [PCM-DPC (2020)](https://github.com/pcm-dpc/COVID-19) , [ISTAT (2020)](https://www.istat.it/it/archivio/240401)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Symptomatic Cases by Date of Symptoms Onset*
+
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_symptomatics.png)
+
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Symptomatic Cases by Date of Symptoms Onset*
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_symptomatics_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Confirmed Cases by Date of Diagnosis*
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_positives.png)
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Confirmed Cases by Date of Diagnosis*
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_positives_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Hospital Admissions by Date of Admission*
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_hospital_admissions.png)
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Hospital Admissions by Date of Admission*
+
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_admissions_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *ICU Admissions by Date of Admission*
+
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_ICU_admissions.png)
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *ICU Admissions by Date of Admission*
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_ICU_admissions_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Discharged Cases by Date of Discharge*
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_discharges.png)
+
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Discharged Cases by Date of Discharge*
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_discharges_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Deceased Cases by Date of Death*
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_50_80_final_technical_deaths.png)
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: single-phase
+class: center 
+
+## Single Phase Calibration
+
+#### *Deceased Cases by Date of Death*
+
+.pull-left[
+![](figures/Models/S_E_Iaptu_Isptu_P_Q_H_ICU_R_D/age_stratified_calibration_deaths_50_80_show.png)
+]
+.footnote[
+.left[.small[**Sources**: SEPI-SEREMI (2020)]]]
+
+---
+
+name: multi-phase1
+class: center 
+
+## Multi-Phase Calibration
+
+#### *School Closure, Public Events Ban & Social Distancing*
+
+![](figures/Models/S_E_Ia_Is_P_Q_H_ICU_R_D/Multi-phase calibration/P1_correct_dates.png)
+.footnote[
+.left[.small[**Sources**: [Regione Piemonte (2020)](https://www.regione.piemonte.it/web/temi/sanita/coronavirus-piemonte-ordinanze-circolari-disposizioni-attuative) , [Flaxman et al. (2020)](https://doi.org/10.1038/s41586-020-2405-7) , [Desvars-Larrive et al. (2020)](https://doi.org/10.1038/s41597-020-00609-9)]]]
+
+
+---
+
+name: multi-phase2
+class: center 
+
+## Multi-Phase Calibration
+
+#### *Lockdown*
+
+![](figures/Models/S_E_Ia_Is_P_Q_H_ICU_R_D/Multi-phase calibration/P2_correct_dates.png)
+.footnote[
+.left[.small[**Sources**: [Regione Piemonte (2020)](https://www.regione.piemonte.it/web/temi/sanita/coronavirus-piemonte-ordinanze-circolari-disposizioni-attuative) , [Flaxman et al. (2020)](https://doi.org/10.1038/s41586-020-2405-7) , [Desvars-Larrive et al. (2020)](https://doi.org/10.1038/s41597-020-00609-9)]]]
+
+---
+
+name: multi-phase3
+class: center 
+
+## Multi-Phase Calibration
+
+#### *Extended Lockdown*
+
+![](figures/Models/S_E_Ia_Is_P_Q_H_ICU_R_D/Multi-phase calibration/P3_correct_dates.png)
+.footnote[
+.left[.small[**Sources**: [Regione Piemonte (2020)](https://www.regione.piemonte.it/web/temi/sanita/coronavirus-piemonte-ordinanze-circolari-disposizioni-attuative) , [Flaxman et al. (2020)](https://doi.org/10.1038/s41586-020-2405-7) , [Desvars-Larrive et al. (2020)](https://doi.org/10.1038/s41597-020-00609-9)]]]
+
+---
+
+name: discussion
+class: center 
+
+# Discussion
+
+.left[
+
+#### Good news about SEPI-SEREMI data
+
+#### Bad news about SEPI-SEREMI data
+
+#### Initial conditions
+
+#### Portfolio of scenarios
+]
