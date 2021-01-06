@@ -12,12 +12,12 @@
 
 ### Data Mining 
 
-* [Reddit Gender Text-Classification](https://inphyt.github.io/DataMiningChallange/)
-* [BERT Sentiment Classification](https://inphyt.github.io/DataMiningBert/)
+* [Reddit Gender Text-Classification](https://inphyt.github.io/Reddit_Text_Classification/)
+* [BERT Sentiment Classification](https://inphyt.github.io/IMDb_Sentiment_Analysis_BERT/)
 
 ### Neural Networks
-* [Dataset Analysis and CNN Models Optimization for Plant Disease Classification](https://inphyt.github.io/NeuralNetworksProject/)
+* [Dataset Analysis and CNN Models Optimization for Plant Disease Classification](https://inphyt.github.io/Plant_Disease_Classification_CNN/)
 
 ### Social Physics
 
-* [Ego Graph Analysis on Social Media](https://inphyt.github.io/SocialPhysicsProject/)
+* [Ego Graph Analysis on Social Media](https://inphyt.github.io/Social_Ego_Network_Analysis/)
