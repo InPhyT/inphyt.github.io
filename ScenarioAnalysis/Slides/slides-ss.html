@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>COVID-19 Modelling</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# COVID-19 Modelling<br>
+## <em>Scenario Analysis for<br>the Piedmont Region</em><br><br><br>
+### 2021-02-09 | <em>SEPI-SEREMI</em>
+
+---
+
+
+
+
+name: overview
+class: center 
+
+# Overview 
+
+.left[
+
+.pull-left[
+
+### **Data**
+
+* [*Population*](#population)
+
+* [*Contact*](#contact)
+
+* [*Behaviour*](#behaviour)
+
+* [*Surveillance*](#surveillance)
+
+* [*Policy*](#policy)
+
+### **Modelling**
+
+* [*Structure*](#description)
+
+* [*Initialization*](#initialization)
+
+* [*Calibration*](#calibration)
+]
+
+.pull-right[
+
+### **Work in Progress**
+
+* [*Multi-Method `\(R_t\)` Estimation*](#rt)
+
+* [*Identifiability Analysis*](#identifiability)
+
+* [*Sensitivity Analysis*](#sensitivity)
+
+* [*Validation*](#validation)
+
+### **Questions**
+
+* [*Events*](#events)
+
+* [*Transition Delays*](#delays)
+
+* [*Hospital &amp; ICU Capacity*](#hospital-capacity)
+
+* [*Diagnostic Capacity*](#diagnostic-capacity)
+]
+]
+
+---
+name: population
+class: center 
+
+## Population Data   
+
+.pull-left[
+### **National**
+![Italy](Images/Data/Population/Italy/National/Italy.png)
+]
+
+.pull-right[
+### **Regional** 
+![Piedmont](Images/Data/Population/Italy/Regional/Piedmont.png)
+]
+
+
+.footnote[
+.left[.small[**Source**: [ISTAT (2020)](http://demo.istat.it/pop2020/index_e.html)]]
+]
+
+---
+name: contact
+class: center 
+
+## Contact Data
+
+.pull-left[
+### **National**
+&lt;img src="Images/Data/Contact/Prem2020/Italy/National/All.png" height="210px" width="210px"/&gt;
+&lt;img src="Images/Data/Contact/Mistry2020/Italy/National/All.png" height="210px" width="210px"/&gt;
+]
+
+.pull-right[
+### **Regional**
+&lt;img src="Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/All.png" height="210px" width="210px"/&gt; 
+&lt;img src="Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/All.png" height="210px" width="210px"/&gt;
+]
+
+.footnote[
+&lt;br&gt;&lt;br&gt;
+.left[.small[**Sources**: [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638), [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772),  [Mistry et al. (2020)](https://doi.org/10.1038/s41467-020-20544-y)
+]]]
+
+---
+name: contact-medium-resolution
+class: center 
+
+## Contact Data: Medium Resolution
+
+.pull-left[
+### **National**
+.pull-left[
+![Home](Images/Data/Contact/Prem2020/Italy/National/Home.png)
+![School](Images/Data/Contact/Prem2020/Italy/National/School.png)
+]
+.pull-right[
+![Work](Images/Data/Contact/Prem2020/Italy/National/Work.png)
+![Community](Images/Data/Contact/Prem2020/Italy/National/Community.png)
+]
+
+]
+
+.pull-right[
+### **Regional** 
+
+.pull-left[
+![Home](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Home.png)
+![School](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/School.png)
+]
+.pull-right[
+![Work](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Work.png)
+![Community](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Community.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638), [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772)
+]]]
+
+---
+name: contact-low-res
+class: center 
+
+## Contact Data: High Resolution
+
+.pull-left[
+### **National**
+.pull-left[
+![Home](Images/Data/Contact/Mistry2020/Italy/National/Home.png)
+![School](Images/Data/Contact/Mistry2020/Italy/National/School.png)
+]
+.pull-right[
+![Work](Images/Data/Contact/Mistry2020/Italy/National/Work.png)
+![Community](Images/Data/Contact/Mistry2020/Italy/National/Community.png)
+]
+
+]
+
+.pull-right[
+### **Regional** 
+
+.pull-left[
+![Home](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Home.png)
+![School](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/School.png)
+]
+.pull-right[
+![Work](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Work.png)
+![Community](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Community.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638), [Mistry et al. (2020)](https://doi.org/10.1038/s41467-020-20544-y) 
+]]]
+
+---
+name: contact-aggregated
+class: center 
+
+## Contact Data: Aggregated
+
+.pull-left[
+### **Medium Resolution**
+.pull-left[
+![Home](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Coarse/Home.png)
+![School](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Coarse/School.png)
+]
+
+.pull-right[
+![Work](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Coarse/Work.png)
+![Community](Images/Data/Contact/Prem2020/Italy/Regional/Piemonte/Coarse/Community.png)
+]
+
+]
+
+.pull-right[
+### **High Resolution** 
+.pull-left[
+![Home](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Coarse/Home.png)
+![School](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Coarse/School.png)
+]
+.pull-right[
+![Work](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Coarse/Work.png)
+![Community](Images/Data/Contact/Mistry2020/Italy/Regional/Piemonte/Coarse/Community.png)
+]
+]
+
+.footnote[
+.left[.small[**Sources**: [Arregui et al. (2018)](https://doi.org/10.1371/journal.pcbi.1006638), [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772),  [Mistry et al. (2020)](https://doi.org/10.1038/s41467-020-20544-y)
+]]]
+
+---
+name: behaviour-home
+class: center 
+
+## Behavioural Data: Home
+
+.pull-left[
+![](Images/Data/Behaviour/Gifs/home.gif)
+]
+
+.pull-right[
+![](Images/Data/Behaviour/Plots/home_avg_individual.png)
+]
+
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772), [Google (2020)](https://www.google.com/covid19/mobility/)
+]]]
+
+---
+name: behaviour-work
+class: center 
+
+## Behavioural Data: Work
+
+.pull-left[
+![](Images/Data/Behaviour/Gifs/work.gif)
+]
+
+.pull-right[
+![](Images/Data/Behaviour/Plots/work_avg_individual.png)
+]
+
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772), [Google (2020)](https://www.google.com/covid19/mobility/)
+]]]
+---
+name: behaviour-community
+class: center 
+
+## Behavioural Data: Community
+
+.pull-left[
+![](Images/Data/Behaviour/Gifs/community.gif)
+]
+
+.pull-right[
+![](Images/Data/Behaviour/Plots/community_avg_individual.png)
+]
+
+
+.footnote[
+.left[.small[**Sources**: [Prem et al. (2020)](https://doi.org/10.1101/2020.07.22.20159772), [Google (2020)](https://www.google.com/covid19/mobility/)
+]]]
+
+
+---
+name: surveillance-cases-onset
+class: center 
+
+## Surveillance Data: Symptoms
+
+.pull-left[
+### **National**
+![Incidence by Date of Symptom Onset](Images/Data/Surveillance/Italy/National/cases_symptoms_onset.png)
+
+]
+
+.pull-right[
+### **Regional** 
+![Incidence by Date of Symptom Onset](Images/Data/Surveillance/Italy/Regional/Piedmont/cases_symptoms_onset.png)
+]
+
+.footnote[
+.left[.small[**Sources**: [PCM-DPC (2020)](https://github.com/pcm-dpc/COVID-19), [ISS (2020)](https://www.epicentro.iss.it/coronavirus/sars-cov-2-dashboard), [SEPI-SEREMI (2020)](https://github.com/InPhyT/ComputationalEpidemiologyProject/tree/main/Data/Surveillance/SEPI-SEREMI)]]]
+
+---
+name: surveillance-cases-diagnosis
+class: center 
+
+## Surveillance Data: Diagnosis
+
+.pull-left[
+### **National**
+![Incidence by Date of Diagnosis](Images/Data/Surveillance/Italy/National/cases_diagnosis.png)
+
+]
+
+.pull-right[
+### **Regional** 
+![Incidence by Date of Confirmation](Images/Data/Surveillance/Italy/Regional/Piedmont/cases_confirmation.png)
+]
+
+.footnote[
+.left[.small[**Sources**: [PCM-DPC (2020)](https://github.com/pcm-dpc/COVID-19), [ISS (2020)](https://www.epicentro.iss.it/coronavirus/sars-cov-2-dashboard), [SEPI-SEREMI (2020)](https://github.com/InPhyT/ComputationalEpidemiologyProject/tree/main/Data/Surveillance/SEPI-SEREMI)]]]
+
+---
+name: surveillance-cases-notification
+class: center 
+
+## Surveillance Data: Notification
+
+.pull-left[
+### **National**
+![Incidence by Date of Test](Images/Data/Surveillance/Italy/National/cases_notification.png)
+
+]
+
+.pull-right[
+### **Regional** 
+![Incidence by Date of Confirmation](Images/Data/Surveillance/Italy/Regional/Piedmont/cases_notification.png)
+]
+
+.footnote[
+.left[.small[**Sources**: [PCM-DPC (2020)](https://github.com/pcm-dpc/COVID-19), [ISS (2020)](https://www.epicentro.iss.it/coronavirus/sars-cov-2-dashboard), [SEPI-SEREMI (2020)](https://github.com/InPhyT/ComputationalEpidemiologyProject/tree/main/Data/Surveillance/SEPI-SEREMI)]]]
+
+---
+name: policy
+class: center 
+
+## Policy Data   
+
+&lt;br&gt;
+
+| Phase | Interventions | Start Date | End Date |
+| :---: | :------------ | :--------- | :------- |
+|   1   | School Closure | 24-02-2020 | 09-03-2020 |
+|   2   | Weak Lockdown | 09-03-2020 | 22-03-2020 |
+|   3   | Medium Lockdown* | 22-03-2020 | 03-04-2020 |
+|   4   | Strong Lockdown | 03-04-2020 | 04-05-2020 |
+|   5   | Weak Reopening* | 04-05-2020 | 18-05-2020 |
+|   6   | Strong Reopening | 04-05-2020 | 10-07-2020 |
+&lt;br&gt;
+.left[
+***Optional phase**: could be contained in "strong lockdown" and "strong reopening" phases respectively.
+
+.footnote[
+.small[
+**Source**: [Regione Piemonte](https://www.regione.piemonte.it/web/temi/sanita/coronavirus-piemonte-ordinanze-circolari-disposizioni-attuative)]]
+]
+
+---
+
+name: model-structure
+class: center 
+
+## Model Structure
+
+.left[
+  &lt;img src="Images/Models/Full/Diagram/Full.png" height="550px" width="650px"/&gt;
+]
+---
+
+name: model-states
+class: center 
+
+## Model States
+
+.pull-left[
+### **Clinical** 
+.small[
+| Variable | Description | 
+| ----- | :---------- |
+| `\(S\)`     | Susceptible  | 
+| `\(E\)`     | Exposed / Latent  |
+| `\(I_p^a\)`  | Pre-asymptomatic   |
+| `\(I_p^s\)`  | Pre-symptomatic    |
+| `\(I_a^t\)`  | Asymptomatic   to be tested|
+| `\(I_s^t\)`  | Symptomatic   to be tested|
+| `\(I_a^u\)`  | Asymptomatic   not to be tested|
+| `\(I_s^u\)`  | Symptomatic   not to be tested|
+| `\(R_u\)`   | Undetected recovered  |
+| `\(D_u\)`   | Undetected deceased  |
+| `\(R_t\)`   | Tested recovered  |
+| `\(D_t\)`   | Tested deceased  |
+]
+]
+
+.pull-right[
+### **Surveillance**
+.small[
+| Variable | Description | 
+| ----- | :---------- |
+| `\(T_a\)`   | Tested asymptomatic   |
+| `\(T_s\)`   | Tested asymptomatic  |
+| `\(P_a\)`   | Confirmed asymptomatic   |
+| `\(P_s\)`   | Confirmed symptomatic   |
+| `\(Q_a\)`   | Quarantined asymptomatic  |
+| `\(Q_s\)`   | Quarantined symptomatic  |
+| `\(H\)`     | Hospitalized |
+| `\(ICU\)`   | Intensive care unit |
+| `\(N_p\)`   | Notified/reported confirmed cases |
+| `\(N_q\)`   | Notified/reported quarantined cases |
+| `\(N_h\)`   | Notified/reported hospitalized cases |
+| `\(N_{icu}\)` | Notified/reported ICU cases |
+| `\(N_r\)`   | Notified/reported recovered cases |
+| `\(N_d\)`   | Notified/reported deceased cases |
+]
+]
+
+---
+name: model-parameters
+class: center 
+
+## Model Parameters
+
+.pull-left[
+### **Fixed** 
+.small[
+| Parameter | Description | 
+| ----- | :---------- |
+| `\(\theta\)`        | Susceptibility to infection |
+| `\(\sigma\)`        | Symptomatic fraction |
+| `\(\eta\)`          | Infection hospitalization ratio |
+| `\(\delta\)`        | Infection fatality ratio |
+| `\(\delta_s\)`      | Symptomatic infection fatality ratio |
+| `\(\delta_h\)`      | Hospitalization fatality ratio |
+| `\(\delta_{icu}\)`  | Critical care fatality ratio |
+]
+]
+
+.pull-right[
+### **Free**
+.small[
+| Parameter | Description | 
+| ----- | :---------- |
+| `\(\beta_{p/a/s}\)`  | Transmissibility |
+| `\(\epsilon_{p/a/s}^{-1}\)` | Pre- / Infectious period |
+| `\(\tau_{a/s}\)`| Ascertainment rate |
+| `\(\lambda_t⁻¹\)`   | Onset to diagnosis | 
+| `\(\lambda_p^{-1}\)`   | Diagnosis to confirmation |
+| `\(\lambda_q^{-1}\)`   | Confirmation to isolation |
+| `\(\lambda_h^{-1}\)`   | Confirmation to H admission |
+| `\(\lambda_{icu}^{-1}\)`   | H admission to ICU admission |
+| `\(\lambda_r^{-1}\)`   | Onset to recovery |
+| `\(\lambda_d^{-1}\)`   |  Onset to death |
+| `\(\lambda_{hd}^{-1}\)`   |  H admission to death |
+| `\(\lambda_{icud}^{-1}\)` |  ICU admission to death |
+| `\(\lambda_{xn}^{-1}\)`   | Notification period |
+]]
+
+---
+
+name: model-initialization
+class: center 
+
+## Model Initialization
+
+.pull-left[
+#### **100% Ascertainment**
+&lt;img src="Images/Results/Estimation/Infections/infections_100.png" height="200px" width="250px"/&gt;
+#### **30% Ascertainment**
+&lt;img src="Images/Results/Estimation/Infections/infections_30.png" height="200px" width="250px"/&gt;
+]
+.pull-right[
+#### **70% Ascertainment**
+&lt;img src="Images/Results/Estimation/Infections/infections_70.png" height="200px" width="230px"/&gt;
+#### **10% Ascertainment**
+&lt;img src="Images/Results/Estimation/Infections/infections_10.png" height="200px" width="230px"/&gt;
+]
+
+---
+name: model-calibration
+class: center 
+
+## Model Calibration
+
+.small[.small[
+
+| Method | Package | Package Description | Application | Pros | Cons | References |
+| :----: | :----- | :----------------- | :--------- | :-- | :-- | :--------- | 
+|   ABC  | [`ApproxBayes.jl`](https://github.com/marcjwilliams1/ApproxBayes.jl) **[1]** | Adopts Approximate Bayesian Computation to perform parameters posterior inference | None, implemented for completeness | Very fast sampling | Very inaccurate parameter estimation, expecially for complex models |[Sunnåker et al. (2013)](https://doi.org/10.1371/journal.pcbi.1002803) &amp; [Minter, Retkute (2019)](https://doi.org/10.1016/j.epidem.2019.100368) |
+|  BFGS  | [`Optim.jl`](https://julianlsolvers.github.io/Optim.jl/stable/) **[2]** | Provides various optimizers and losses to carry out non bayesian (GD-based) optimization  | Initialization of more advanced calibration algorithms | Very good optimizer, excellent for initializing the other samplers | Does not produce a posterior, only a set of values. |  |
+|  MCMC  | [`Turing.jl`](https://turing.ml/stable/) **[3]** | Exposes a variety of HMC samplers, including the most advanced NUTS | Main parameter estimation tool | Very customizable and easy to use |It suffers from bad priors choiche | [Ravenswaaij et al. (2016)](https://doi.org/10.3758/s13423-016-1015-8) &amp; [Betancourt (2017)](https://arxiv.org/abs/1701.02434) |
+|  ADVI  | [`Turing.jl`](https://turing.ml/stable/) **[1]** | Implements Automatic Differentiation Variational Inference | Main parameter estimation tool | Very quick sampler, and more accurate than ABC. In the future, it could be used to bootstrap the priors to be passed to MCMC methods | Assumes parameters uncorrelation by default | [Turing.jl Documentation](https://turing.ml/dev/docs/for-developers/variational_inference) |
+
+]]
+
+.footnote[
+.left[.small[
+**[1]** Some of its features are used via [`DiffEqBayes.jl`](https://github.com/SciML/DiffEqBayes.jl) &lt;br&gt;
+**[2]** Some of its features are used via [`DiffEqParamEstim.jl`](https://github.com/SciML/DiffEqParamEstim.jl) &lt;br&gt;
+**[3]** Some of its features are used via [`DiffEqBayes.jl`](https://github.com/SciML/DiffEqBayes.jl) and [`DynamicHMC.jl`](https://github.com/tpapp/DynamicHMC.jl)
+]]]
+
+---
+name: model-calibration-behaviour
+class: center 
+
+## Model Calibration
+
+.pull-left[
+### **Behaviour**
+.pull-left[
+![](Images/Models/S_E_I_R_D/Contact/behavioral_matrix_1.png)
+![](Images/Models/S_E_I_R_D/Contact/behavioral_matrix_3.png)
+
+]
+
+.pull-right[
+![](Images/Models/S_E_I_R_D/Contact/behavioral_matrix_2.png)
+![](Images/Models/S_E_I_R_D/Contact/behavioral_matrix_4.png)
+
+]
+
+]
+
+.pull-right[
+### **Impact**
+
+.pull-left[
+![](Images/Models/S_E_I_R_D/Contact/impact_contact_matrix_1.png)
+![](Images/Models/S_E_I_R_D/Contact/impact_contact_matrix_3.png)
+
+]
+
+.pull-right[
+![](Images/Models/S_E_I_R_D/Contact/impact_contact_matrix_2.png)
+![](Images/Models/S_E_I_R_D/Contact/impact_contact_matrix_4.png)
+]
+
+]
+
+.footnote[
+.left[.small[**NB**: These are simple SEIRD-based estimates for illustrative purposes.]]]
+
+---
+name: model-calibration-admissions
+class: center 
+
+## Model Calibration
+
+.pull-left[
+### **Hospital Admissions**
+
+.pull-left[
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/admissions_2_only_finer.png)
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/admissions_4_only_finer.png)
+
+]
+.pull-right[
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/admissions_3_only_finer.png)
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/admissions_5_only_finer.png)
+]
+]
+
+.pull-right[
+### **ICU Admissions**
+.pull-left[
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/icus_2_only_finer.png)
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/icus_4_only_finer.png)
+]
+.pull-right[
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/icus_3_only_finer.png)
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/icus_5_only_finer.png)
+
+]]
+
+.footnote[
+.left[.small[**NB**: These are simple SEIHICURD-based estimates for illustrative purposes.]]]
+
+---
+name: correlation-analysis-1
+class: center 
+
+## Correlation Analysis
+
+.pull-left[
+### **School Closure**
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/all_with_gammas/heatmap_school_closure_all.png)
+]
+
+.pull-right[
+### **Weak Lockdown**
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/all_with_gammas/heatmap_weak_lockdown_all.png)
+]
+
+.footnote[
+.left[.small[**NB**: These are simple SEIHICURD-based estimates for illustrative purposes.]]]
+
+---
+name: correlation-analysis-2
+class: center 
+
+## Correlation Analysis
+
+.pull-left[
+### **Strong Lockdown**
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/all_with_gammas/heatmap_strong_lockdown_all.png)
+]
+
+.pull-right[
+### **Weak Reopening**
+![](Images/Models/S_E_I_H_ICU_R_D/costa_9_2/all_with_gammas/heatmap_weak_reopening_all.png)
+]
+
+.footnote[
+.left[.small[**NB**: These are simple SEIHICURD-based estimates for illustrative purposes.]]]
+
+
+---
+name: model-projection
+class: center 
+
+## Model Projection
+
+.pull-left[
+### **Hospital Admissions**
+&lt;img src="Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/admissions_only_finer.png" height="390" width="320"/&gt;
+]
+
+.pull-right[
+### **ICU Admissions**
+&lt;img src="Images/Models/S_E_I_H_ICU_R_D/costa_9_2/compartment_wise/icus_only_finer.png" height="390" width="320"/&gt;
+]
+
+.footnote[
+.left[.small[**NB**: These are simple SEIHICURD-based projections for illustrative purposes.]]]
+
+---
+name: work-in-progress
+class: center 
+
+## Work in Progress
+
+.left[.small[
+.pull-left[
+
+### **Rt Estimation**
+
+* `{EpiEstim2}` by [Thompson et al. (2019)](https://doi.org/10.1016/j.epidem.2019.100356) 
+
+* `{EpiNow2}` by [Abbott et al. (2020)](https://doi.org/10.12688/wellcomeopenres.16006.2) 
+
+* `\(NGM_{eff}(t)\)` 
+
+### **Identifiability**
+* Structural identifiability analysis
+
+* Practical identifiability analysis
+
+### **Sensitivity**
+* Local sensitivity analysis
+
+* Global sensitivity analysis
+
+]
+
+.pull-right[
+
+### **Validation**
+* **Effective Reproduction Number**: simulated incidence based vs. observed incidence based `\(R_t\)` estimation 
+
+* **Infections**: simulated infections vs. estimated infections
+
+* **Prevalence**: simulated prevalence vs. observed prevalence ([ISTAT (2020)](https://www.istat.it/it/archivio/246156))
+
+* **Mortality**: simulated mortality (detected and undetected) vs. observed (ISTAT, ISS) and estimated (Economist, Scortichini et al.) excess mortality 
+
+### **Scenarios**
+
+* Retrospective Scenario Analysis 
+
+* Prospective Scenario Analysis 
+]]]
+
+---
+name: questions
+class: center 
+
+## Questions
+
+.footnote[
+.left[.small[[SEPI-SEREMI (2020)](https://github.com/InPhyT/ComputationalEpidemiologyProject/tree/main/Data/Surveillance/CSI)]]]
+
+--
+
+.left[.small[
+**1.** Ordinary, intensive and deaths caused by respiratory diseases (e.g. pneumonia) for 2015-2019 and 2020. 
+]]
+--
+.left[.small[
+**2.** Line-list data for empirical delay distribution together with event-based `date_notification`.
+.small[
+| `ID` | `age` | `date_onset` | `date_diag` | `date_conf` | `date_in_H` | `date_out_H` | `date_in_ICU` | `date_out_ICU` | `date_death` |
+| ---- | ----------- | ----------- | ------------ | ----------- | ----------- | --------- | 
+] 
+]]  
+--
+.left[.small[
+**3.** General update
+]]  
+--
+.left[.small[
+**4.** Non-survived ordinary and intensive discharges by date of discharge 
+]]
+--
+.left[.small[
+**5.** Finest age classes
+]]
+--
+.left[.small[
+**6.** Both flow and stock hospitalization data
+]]
+--
+.left[.small[
+**7.** Status-stratified confirmed cases by date of diagnosis and by date of confirmation
+]]
+--
+.left[.small[
+**8.** Status-stratified quarantined/isolated cases 
+]]
+--
+.left[.small[
+**9.** Dynamics of diagnostic capacity (laboratories and tests) .small[
+| `date` | `number_laboratories` | `number_tests` | 
+| ---- | ----------- | ----------- | 
+]
+]]
+--
+.left[.small[
+**10.** Dynamics of ordinary and intensive hospitalization capacity 
+
+.small[
+| `date` | `H_bed_capacity` | `ICU_bed_capacity` | `medical_personnel` |
+| ---- | ----------- | ----------- | ------------ | 
+]
+]]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "tomorrow-night-bright",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
