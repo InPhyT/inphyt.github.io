@@ -706,7 +706,7 @@ The achieved performance, in units of experimental standard deviation (see [Druc
 
 which amounts to an aggregated loss of 39.063, that while being not too far from the 3 standard deviations per features goal (`3*12 = 36`), it is not very much satisfying either. Infact, if one looks at a simulated trace (blue) plotted together with one of the sweeps used for calibration:
 
-![calibration_results.PNG](https://github.com/InPhyT/inphyt.github.io/blob/master/ComputationalNeuroscience/images/calibration_results.PNG)
+![calibration_results.PNG](images/calibration_results.PNG)
 
 She/he may notice that:
 
@@ -724,15 +724,15 @@ We wrap up by showing more plots relative to the above run:
 
 **Model currents, gating variables dynamics (with zoom in on first spike)**:
 
-![time_series.PNG](https://github.com/InPhyT/inphyt.github.io/blob/master/ComputationalNeuroscience/images/time_series.PNG)
+![time_series.PNG](images/time_series.PNG)
 
 **Same with voltage on the x-axis**:
 
-![phase_space.PNG](https://github.com/InPhyT/inphyt.github.io/blob/master/ComputationalNeuroscience/images/phase_space.PNG)
+![phase_space.PNG](images/phase_space.PNG)
 
 **All the experimental sweeps used**:
 
-![type_amplitude.PNG](https://github.com/InPhyT/inphyt.github.io/blob/master/ComputationalNeuroscience/images/type_amplitude.PNG)
+![type_amplitude.PNG](images/type_amplitude.PNG)
 
 In our opinion, this example shows both the possibilities of this framework, and the issues that still persist.
 
